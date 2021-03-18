@@ -10,15 +10,15 @@ import { environment } from '../../../environments/environment';
 
 export class AccountComponent implements OnInit{
     constructor(private http: HttpClient, private authService: AuthService) {}
-    private userData; 
-    private userEmail;
-    private userFName;
-    private userLName; 
-    private userStatus; 
-    private userAccountStanding; 
-    private expirationTime; 
-    private userAccountType; 
-    private httpOptions = {
+    public userData; 
+    public userEmail;
+    public userFName;
+    public userLName; 
+    public userStatus; 
+    public userAccountStanding; 
+    public expirationTime; 
+    public userAccountType; 
+    public httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
         withCredentials: true, 
         observe: 'response' as 'response'

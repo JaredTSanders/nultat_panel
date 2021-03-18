@@ -6,6 +6,7 @@ import { DefaultLayoutComponent } from './containers';
 
 import { AuthGuard } from './_auth/guards/auth.guard';
 import { P404Component } from './views/error/404.component';
+import { AccountComponent } from './views/account/account.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
@@ -35,6 +36,13 @@ export const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    data: {
+      title: 'My Account'
     }
   },
   {

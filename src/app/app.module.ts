@@ -13,6 +13,7 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
 import { AuthService } from "./_auth/services/auth.service";
 import { TokenIntercept } from "./_auth/tokenintercept";
 import { AuthGuard } from './_auth/guards/auth.guard';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -69,6 +70,7 @@ import { CookieModule } from "ngx-cookie";
     IconModule,
     IconSetModule.forRoot(),
     CookieModule.forRoot(),
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,

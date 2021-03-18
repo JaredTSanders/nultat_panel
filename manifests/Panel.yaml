@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nulat-dev-panel
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: nultat-dev-panel
+  template:
+    metadata:
+      labels:
+        app: nultat-dev-panel  
+    spec:
+      containers:
+        - name: panel-dev
+          image: kronos23/nultat-panel:v1.1.4
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nultat-dev-panel
+  name: nultat-dev-panel-svc
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+  selector:
+    app: nultat-dev-panel
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: nultat-dev-ingress
+spec:
+  rules:
+  - host: nultat-dev.jaredtsanders.com
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: /
+        backend:
+          serviceName: nultat-dev-panel-svc
+          servicePort: 80
+
+
+

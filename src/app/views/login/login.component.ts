@@ -6,9 +6,10 @@ import { CheckRequiredField } from '../../_helpers/form.helper';
 import { AuthService } from '../../_auth/services/auth.service';
 import { CookieService } from 'ngx-cookie';
 
+
 @Component({
   selector: 'app-dashboard',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
 })
 export class LoginComponent implements OnInit {
 
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
 
   processing: Boolean = false;
   error: Boolean = false;
+
+  checkField  = CheckRequiredField;
 
 
   constructor(
@@ -32,10 +35,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  //checkRequiredClass(frmControl: string) {
+    //const t  = this.loginForm.get()
+    //return {
+      //'required' : false
+    //};
+  //}
+
   onSubmitButtonClicked() {
     this.error  = false;
     this.processing  = false;
-    this.login();
+    if (this.loginForm.valid) {
+      this.login();
+    }
   }
 
   private login() {

@@ -7,5 +7,4 @@ export const environment = {
   production: false,
   clientId: 'BYSWlbHG1Hf5k09GuVgUlW9c7FRbp2CG',
   apiBaseUrl: 'http://localhost:8000',
-  ENC_PAS: "9qeoWmgL8DYcFtqUc"
 };

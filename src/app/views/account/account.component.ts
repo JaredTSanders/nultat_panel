@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_auth/services/auth.service'
 import { environment } from '../../../environments/environment';
+import { navItems } from '../../_nav';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,17 +19,26 @@ export class AccountComponent implements OnInit{
     public userAccountStanding; 
     public expirationTime; 
     public userAccountType; 
+
+    public sidebarMinimized = false;
+    public navItems = navItems;
+    
     public httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
         withCredentials: true, 
         observe: 'response' as 'response'
       }
 
+    toggleMinimize(e) {
+        this.sidebarMinimized = e;
+    }
+
     getCurrentUser(){
         const data = this.http.get(environment['apiBaseUrl']  + '/api/user/me', this.httpOptions).toPromise().then(
             res => {
                 this.userData = res;
                 this.userEmail = res['body']['data']['email'];
+                console.log(this.userFName)
                 this.userFName = res['body']['data']['first_name']
                 this.userLName = res['body']['data']['last_name']
                 this.userStatus = res['body']['data']['Status']

@@ -39,13 +39,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'account',
-    component: AccountComponent,
-    data: {
-      title: 'My Account'
-    }
-  },
-  {
     path: 'register',
     component: RegisterComponent,
     data: {
@@ -90,6 +83,10 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('./views/account/account.module').then(m => m.AccountModule)
       }
     ]
   },
